@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <recaptcha translate="title">
+                                        <title>ReCaptcha</title>
+                                    </recaptcha>
+                                    <hevelop_recaptcha translate="title">
+                                        <title>ReCaptcha</title>
+                                    </hevelop_recaptcha>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

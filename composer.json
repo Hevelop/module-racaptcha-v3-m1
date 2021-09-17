@@ -1,0 +1,14 @@
+{
+  "name": "hevelop/recaptcha-v3-m1",
+  "type": "magento-module",
+  "description": "ReCaptcha v3 integration for Magento 1",
+  "authors": [
+    {
+      "name": " Manuel Barbiero",
+      "email": "manuel@hevelop.com"
+    }
+  ],
+  "require": {
+    "magento-hackathon/magento-composer-installer": "*"
+  }
+}

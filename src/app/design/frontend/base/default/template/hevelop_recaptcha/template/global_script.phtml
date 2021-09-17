@@ -1,0 +1,60 @@
+<?php
+/**
+ * @var Hevelop_ReCaptcha_Helper_Data $helper
+ */
+$helper = Mage::helper('hevelop_racaptcha');
+
+if ($helper->isEnabled()):
+?>
+<style>
+    .grecaptcha-badge {display: none;}
+</style>
+<script src="https://www.google.com/recaptcha/api.js?render=<?= $helper->getApiKey() ?>"></script>
+<script>
+    let alreadyShowedError = false;
+
+    function verifyReCaptcha(e, alreadyShowedError = false) {
+        e.preventDefault();
+        grecaptcha.ready(function() {
+            grecaptcha.execute('<?= $helper->getApiKey() ?>', {action: 'submit'}).then(function(token) {
+                // Add your logic to submit to your backend server here.
+                const errorElement = document.createElement('p');
+                errorElement.id = 'recaptcha_error';
+                errorElement.style.color = 'red';
+                errorElement.textContent = "<?= $this->__('An error has occurred while verifying the recaptcha'); ?>";
+
+                fetch('<?= $this->getUrl('recaptcha/siteVerify') ?>', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        response: token
+                    }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        e.target.submit();
+                    } else {
+                        console.error('ReCaptcha Verify Error:', data);
+
+                        if (!alreadyShowedError) {
+                            $(e.target).append(errorElement);
+                            alreadyShowedError = true;
+                        }
+                    }
+                });
+            });
+        });
+    }
+
+    <?php if ($helper->getFormsToValidate() && !empty($helper->getFormsToValidate())): ?>
+    window.onload = function(){
+        <?php foreach ($helper->getFormsToValidate() as $formId): ?>
+        document.querySelector('#<?= $formId ?>').addEventListener('submit', function (e) {
+            e.preventDefault();
+            verifyReCaptcha(e);
+        });
+        <?php endforeach; ?>
+    };
+    <?php endif; ?>
+</script>
+<?php endif; ?>

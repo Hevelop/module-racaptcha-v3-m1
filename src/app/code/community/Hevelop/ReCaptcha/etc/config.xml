@@ -1,0 +1,45 @@
+<?xml version='1.0'?>
+<config>
+    <modules>
+        <Hevelop_ReCaptcha>
+            <version>1.0.0</version>
+        </Hevelop_ReCaptcha>
+    </modules>
+    <global>
+        <helpers>
+            <hevelop_racaptcha>
+                <class>Hevelop_ReCaptcha_Helper</class>
+            </hevelop_racaptcha>
+            <racaptcha>
+                <class>Hevelop_ReCaptcha_Helper</class>
+            </racaptcha>
+        </helpers>
+    </global>
+    <frontend>
+        <layout>
+            <updates>
+                <recaptcha module="Hevelop_ReCaptcha">
+                    <file>hevelop_recaptcha.xml</file>
+                </recaptcha>
+            </updates>
+        </layout>
+        <routers>
+            <recaptcha>
+                <use>standard</use>
+                <args>
+                    <module>Hevelop_ReCaptcha</module>
+                    <frontName>recaptcha</frontName>
+                </args>
+            </recaptcha>
+        </routers>
+        <translate>
+            <modules>
+                <Hevelop_ReCaptcha>
+                    <files>
+                        <default>Hevelop_ReCaptcha.csv</default>
+                    </files>
+                </Hevelop_ReCaptcha>
+            </modules>
+        </translate>
+    </frontend>
+</config>

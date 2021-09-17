@@ -1,0 +1,7 @@
+src/app/code/community/Hevelop                                          app/code/community/Hevelop
+src/app/design/frontend/base/default/layout/hevelop_recaptcha.xml       app/design/frontend/base/default/layout/hevelop_recaptcha.xml
+src/app/design/frontend/base/default/template/hevelop_recaptcha         app/design/frontend/base/default/template/hevelop_recaptcha
+src/app/etc/modules/Hevelop_ReCaptcha.xml                               app/etc/modules/Hevelop_ReCaptcha.xml
+src/app/locale/de_DE                                                    app/locale/de_DE
+src/app/locale/it_IT                                                    app/locale/it_IT
+src/app/locale/es_ES                                                    app/locale/es_ES
